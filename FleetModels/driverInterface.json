@@ -1,0 +1,22 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:wcdtrucking:digitaltrip:trip:truck:driver;1",
+    "@type": "Interface",
+    "displayName": "Driver - Interface Model",
+    "contents": [
+        {
+            "@type": "Property",
+            "name": "id",
+            "schema": "string",
+            "description": "Truck Driver Id",
+            "writable": true
+        },
+        {
+            "@type": "Property",
+            "name": "Name",
+            "schema": "string",
+            "description": "Truck Driver Name",
+            "writable": true
+        }
+    ]
+}

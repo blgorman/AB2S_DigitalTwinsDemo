@@ -1,0 +1,42 @@
+{
+    "@id": "dtmi:com:wcdtrucking:digitaltrip:trip:trailer;1",
+    "@type": "Interface",
+    "displayName": "Trailer - Interface Model",
+    "@context": "dtmi:dtdl:context;2",
+    "contents": [
+        {
+            "@type": "Property",
+            "name": "id",
+            "schema": "string",
+            "description": "The Trailer Id",
+            "writable": true
+        },
+        {
+            "@type": "Property",
+            "name": "TrailerLocation",
+            "schema": {
+                "@id": "dtmi:com:wcdtrucking:digitaltrip:custom_schema:trailerlocation;1",
+                "@type": "Object",
+                "fields": [
+                    {
+                        "@id": "dtmi:com:wcdtrucking:digitaltrip:custom_schema:trailerlocation:lat;1",
+                        "name": "Latitude",
+                        "schema": "double"
+                    },
+                    {
+                        "@id": "dtmi:com:wcdtrucking:digitaltrip:custom_schema:trailerlocation:lon;1",
+                        "name": "Longitude",
+                        "schema": "double"
+                    }
+                ]
+            }
+        },
+        {
+            "@type": "Relationship",
+            "@id": "dtmi:com:wcdtrucking:digitaltrip:trip:trailer:rel_has_devices;1",
+            "name": "rel_has_devices",
+            "displayName": "Has devices",
+            "target": "dtmi:com:wcdtrucking:digitaltrip:trip:trailer:trailer_device;1"
+        }
+    ]
+}

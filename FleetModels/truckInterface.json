@@ -1,0 +1,49 @@
+{
+    "@id": "dtmi:com:wcdtrucking:digitaltrip:trip:truck;1",
+    "@type": "Interface",
+    "displayName": "Truck - Interface Model",
+    "@context": "dtmi:dtdl:context;2",
+    "contents": [
+        {
+            "@type": "Property",
+            "name": "id",
+            "schema": "string",
+            "description": "The Truck id",
+            "writable": true
+        },
+        {
+            "@type": "Property",
+            "name": "TruckLocation",
+            "schema": {
+                "@id": "dtmi:com:wcdtrucking:digitaltrip:custom_schema:trucklocation;1",
+                "@type": "Object",
+                "fields": [
+                    {
+                        "@id": "dtmi:com:wcdtrucking:digitaltrip:custom_schema:trucklocation:lat;1",
+                        "name": "Latitude",
+                        "schema": "double"
+                    },
+                    {
+                        "@id": "dtmi:com:wcdtrucking:digitaltrip:custom_schema:trucklocation:lon;1",
+                        "name": "Longitude",
+                        "schema": "double"
+                    }
+                ]
+            }
+        },
+        {
+            "@type": "Property",
+            "name": "maintenanceAlert",
+            "schema": "boolean",
+            "description": "Truck is in need of maintenance",
+            "writable": true
+        },
+        {
+            "@type": "Relationship",
+            "@id": "dtmi:com:wcdtrucking:digitaltrip:trip:truck:rel_has_drivers;1",
+            "name": "rel_has_drivers",
+            "displayName": "Has drivers",
+            "target": "dtmi:com:wcdtrucking:digitaltrip:trip:truck:driver;1"
+        }
+    ]
+}

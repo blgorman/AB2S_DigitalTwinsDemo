@@ -1,0 +1,28 @@
+{
+    "@context": "dtmi:dtdl:context;2",
+    "@id": "dtmi:com:wcdtrucking:digitaltrip:trip;1",
+    "@type": "Interface",
+    "displayName": "Trip - Interface Model",
+    "contents": [
+        {
+            "@type": "Property",
+            "name": "TripId",
+            "schema": "integer",
+            "writable": true
+        },
+        {
+            "@type": "Relationship",
+            "@id": "dtmi:com:wcdtrucking:digitaltrip:trip:rel_has_trucks;1",
+            "name": "rel_has_trucks",
+            "displayName": "Has trucks",
+            "target": "dtmi:com:wcdtrucking:digitaltrip:trip:truck;1"
+        },
+        {
+            "@type": "Relationship",
+            "@id": "dtmi:com:wcdtrucking:digitaltrip:trip:rel_has_trailers;1",
+            "name": "rel_has_trailers",
+            "displayName": "Has trailers",
+            "target": "dtmi:com:wcdtrucking:digitaltrip:trip:trailer;1"
+        }
+    ]
+}
