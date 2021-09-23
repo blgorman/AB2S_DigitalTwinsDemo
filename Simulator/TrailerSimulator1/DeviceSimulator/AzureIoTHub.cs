@@ -13,6 +13,10 @@ namespace DeviceSimulator
     public static class AzureIoTHub
     {
         private static int taskDelay = 10 * 1000;
+        //#####################################################################
+        //Replace Hub Name, hub Shared Access Key, and then the device shared access keys
+        //  if you have different names for your devices, update those as well
+        //#####################################################################
         private static string hubName = "your-hub-name-here";
         private static string hubSharedAccessKey = "your-hub-owner-shared-access-key";
 
@@ -23,23 +27,17 @@ namespace DeviceSimulator
         private static string device3Name = "trailer_sensor_33333301";
         private static string device3SharedAccessKey = "your-device-shared-access-key";
 
-        /// <summary>
-        /// Please replace with correct connection string value
-        /// The connection string could be got from Azure IoT Hub -> Shared access policies -> iothubowner -> Connection String:
-        /// </summary>
+        //these are composed from the above values
         private static string iotHubConnectionString = @$"HostName={hubName}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={hubSharedAccessKey}";
 
-        /// <summary>
-        /// Please replace with correct device connection string
-        /// The device connect string could be got from Azure IoT Hub -> Devices -> {your device name } -> Connection string
-        /// </summary>
         private static string deviceConnectionString1 = $"HostName={hubName}.azure-devices.net;DeviceId={device1Name};SharedAccessKey={device1SharedAccessKey}";
         private static string deviceConnectionString2 = $"HostName={hubName}.azure-devices.net;DeviceId={device2Name};SharedAccessKey={device2SharedAccessKey}";
         private static string deviceConnectionString3 = $"HostName={hubName}.azure-devices.net;DeviceId={device3Name};SharedAccessKey={device3SharedAccessKey}";
+        
+        //#####################################################################
+        //Replace these for the correct device simulation
+        //#####################################################################
         private static string deviceConnectionString = deviceConnectionString1;
-        //private static string deviceConnectionString = deviceConnectionString2;
-        //private static string deviceConnectionString = deviceConnectionString3;
-
         private static string deviceId = device1Name;
 
         public static async Task<string> CreateDeviceIdentityAsync(string deviceName)
