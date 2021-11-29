@@ -9,6 +9,8 @@ using Newtonsoft.Json.Linq;
 
 namespace DataIngestor
 {
+    //https://docs.microsoft.com/azure/digital-twins/how-to-integrate-time-series-insights?#create-a-function
+    
     public static class ADTToAzureTimeSeriesFunction
     {
         [FunctionName("ADTToAzureTimeSeriesFunction")]
