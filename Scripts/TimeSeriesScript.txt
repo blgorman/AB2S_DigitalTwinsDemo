@@ -1,0 +1,59 @@
+
+--------------------------------------------------------------------------------------------------------------------------------
+/* assumes you have already completed part 1 - make sure to name the function app and ADT instance appropriately */
+--------------------------------------------------------------------------------------------------------------------------------
+--------------------------------------------------------------------------------------------------------------------------------
+Reference: https://docs.microsoft.com/en-us/azure/digital-twins/how-to-integrate-time-series-insights#create-event-hub-namespace
+--------------------------------------------------------------------------------------------------------------------------------
+
+//update appropriately:
+rg=festive-tech-calendar
+loc=eastus
+ehns=ftc-adt-ts-ehns
+ehtwins=ftc-adt-twins-hub      
+ehtwinsauthrule=ftc-adt-twins-auth-rule
+ehtimeseries=ftc-atd-time-series-hub  
+ehtimeseriesauthrule=ftc-atd-time-series-auth-rule
+dtname=ftc-fleet-manager-adt
+dtendpoint=ftc-adt-twins-hub-endpoint 
+dtroute=ftc-adt-twins-hub-route 
+
+
+/* create the event hubs namespace */
+az eventhubs namespace create --name $ehns --resource-group $rg --location $loc
+
+/* TWINS HUB  and DT endpoint/route */
+
+/* create the twins hub */
+az eventhubs eventhub create --name $ehtwins --resource-group $rg --namespace-name $ehns
+
+/* create the auth rule
+az eventhubs eventhub authorization-rule create --rights Listen Send --name $ehtwinsauthrule --resource-group $rg --namespace-name $ehns --eventhub-name $ehtwins
+
+/* create the digital twins endpoint */
+az dt endpoint create eventhub --dt-name $dtname --eventhub-resource-group $rg --eventhub-namespace $ehns --eventhub $ehtwins --eventhub-policy $ehtwinsauthrule --endpoint-name $dtendpoint
+
+/* create the twins hub route */
+az dt route create --dt-name $dtname --endpoint-name $dtendpoint --route-name $dtroute --filter "type = 'Microsoft.DigitalTwins.Twin.Update'"
+
+/* Get the Twins Hub connection string */
+az eventhubs eventhub authorization-rule keys list --resource-group $rg --namespace-name $ehns --eventhub-name $ehtwins --name $ehtwinsauthrule
+
+----
+Endpoint=sb:....
+----
+add output to your environment settings for the function app as `EventHubAppSetting-Twins`  
+
+/* Time series Hub */
+az eventhubs eventhub create --name $ehtimeseries --resource-group $rg --namespace-name $ehns
+
+/* auth rule ts */
+az eventhubs eventhub authorization-rule create --rights Listen Send --name $ehtimeseriesauthrule --resource-group $rg --namespace-name $ehns --eventhub-name $ehtimeseries
+
+az eventhubs eventhub authorization-rule keys list --resource-group $rg --namespace-name $ehns --eventhub-name $ehtimeseries --name $ehtimeseriesauthrule
+
+---
+Endpoint=sb:.....
+---
+
+Add to environment settings for the function app as `EventHubAppSetting-TSI`
