@@ -18,9 +18,9 @@ The second part takes you through the set up of the Event Hubs and the connectio
 
 ### Review the blog post and video  
 
-[Blog post Coming Soon - December 19](https://training.majorguidancesolutions.com/blog/)  
+[Blog post: Festive Tech Calendar](https://training.majorguidancesolutions.com/blog/festive-tech-calendar-2021)  
 
-[Video Coming Soon - December 19](https://training.majorguidancesolutions.com/courses/blog-posts-and-talks/)
+[Video: Festive Tech Calendar](https://www.youtube.com/watch?v=9SG146HnxJU)
 
 ## Conclusion
 
